@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "travel_agency"
+version = "0.1.0"
+description = "Travel agency system"
+authors = [{name = "Travel Agency", email = "info@example.com"}]
+dependencies = [
+    "rich",
+    "pydantic",
+    "python-dotenv",
+]
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+where = ["src"]

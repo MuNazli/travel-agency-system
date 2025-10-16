@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Hami Tur Yönetim Paneli</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#DC2626",
+            "background-light": "#F8FAFC",
+            "background-dark": "#1E293B",
+            "card-light": "#FFFFFF",
+            "card-dark": "#334155",
+            "text-light": "#334155",
+            "text-dark": "#E2E8F0",
+            "text-light-secondary": "#64748B",
+            "text-dark-secondary": "#94A3B8",
+            "border-light": "#E2E8F0",
+            "border-dark": "#475569",
+            success: "#16A34A",
+            warning: "#F97316",
+            danger: "#EF4444"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .material-icons-outlined {
+      font-feature-settings: 'liga';
+    }
+  </style>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans flex text-text-light dark:text-text-dark">
+  <aside class="w-64 bg-card-light dark:bg-card-dark p-4 flex flex-col fixed h-full border-r border-border-light dark:border-border-dark">
+    <div class="flex items-center gap-2 mb-8">
+      <div class="bg-primary p-2 rounded-lg">
+        <span class="material-icons-outlined text-white">flight_takeoff</span>
+      </div>
+      <h1 class="text-xl font-bold text-text-light dark:text-text-dark">HAMİ TUR</h1>
+    </div>
+    <nav class="flex-grow">
+      <ul class="space-y-2">
+        <li>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg text-white bg-primary" href="#">
+            <span class="material-icons-outlined">dashboard</span>Dashboard
+          </a>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">book_online</span>
+              <span>Rezervasyonlar</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">people</span>
+              <span>Müşteri Yönetimi</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">bar_chart</span>
+              <span>Raporlar</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
+          <p class="px-3 text-xs font-semibold text-text-light-secondary dark:text-text-dark-secondary uppercase">Ürün ve Hizmetler</p>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">tour</span>
+              <span>Tur ve Aktiviteler</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">hotel</span>
+              <span>Otel ve Konaklama</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">miscellaneous_services</span>
+              <span>Diğer Hizmetler</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
+          <p class="px-3 text-xs font-semibold text-text-light-secondary dark:text-text-dark-secondary uppercase">Yönetim ve Araçlar</p>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">account_balance</span>
+              <span>Muhasebe</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">inventory</span>
+              <span>İçerik Yönetimi</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+        <li class="pt-4 mt-4 border-t border-border-light dark:border-border-dark">
+          <p class="px-3 text-xs font-semibold text-text-light-secondary dark:text-text-dark-secondary uppercase">Ayarlar</p>
+        </li>
+        <li>
+          <button class="w-full flex items-center justify-between gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
+            <div class="flex items-center gap-3">
+              <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">settings</span>
+              <span>Genel Ayarlar</span>
+            </div>
+            <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">expand_more</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="mt-auto">
+      <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700" href="#">
+        <span class="material-icons-outlined text-text-light-secondary dark:text-text-dark-secondary">help_outline</span>
+        Destek
+      </a>
+    </div>
+  </aside>
+  <main class="ml-64 flex-1 p-6">
+    <header class="flex justify-between items-center mb-6">
+      <div>
+        <h2 class="text-3xl font-bold text-text-light dark:text-text-dark">Dashboard</h2>
+        <p class="text-text-light-secondary dark:text-text-dark-secondary">Hoş geldiniz, işte bugünün özeti.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+          <span class="material-icons-outlined">search</span>
+        </button>
+        <button class="relative p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="absolute top-0 right-0 h-2 w-2 bg-danger rounded-full"></span>
+        </button>
+        <button class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+          <span class="material-icons-outlined">view_quilt</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <img alt="Kullanıcı avatarı" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zj-tYPoVyW4Q7CmXEgjZU8sXbtIdNpaZ4HyzYGDj5PzVkgqsqAFKgs78vStdE_MpO6V0u0d0EDgARnePvXNLXudbTcvMskrUiL3IpVIX-sZYfAzwPrj0CJBt_ND6jjjTr12AjI-kpaLwQM4UGzuiIdEeHRVHoiTFlNv4AM0M_IgrI9vpl9qbY-XJmJ3-5AjHlcwmeLpg1Q4ipC7liZ0amd5BiPMm9NngV9ru60ry20-R-Vq41r8GB407O-84z-vleAyBItDXIHY" />
+          <div>
+            <p class="font-semibold text-sm">Ferdi Tayfur</p>
+            <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">Yönetici</p>
+          </div>
+          <button class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+            <span class="material-icons-outlined text-sm">expand_more</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="bg-card-light dark:bg-card-dark p-4 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">SATIŞLAR (SON 7 GÜN)</p>
+          <p class="text-3xl font-bold my-2">4,588€</p>
+          <p class="text-sm text-success flex items-center">
+            <span class="material-icons-outlined text-base">arrow_upward</span>
+            +12.5%
+          </p>
+        </div>
+        <div class="h-16 mt-4">
+          <img alt="Mini line chart showing sales trend" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSjq2C60lyxGbiq4az4W7aPQKWYzW5KIPNyckAIGssVK0xuBaIi7oRrkvMyyAbR1IaA25CZHybR_qeQ6ep7k7GvmXLfh_kdCZJKPrBIqkJcumOjPAOXVRzbchJRjQ8MvDEOlEuwmZVl6dNYJoGruwATfEdaWa0AOf1iaJjyF0xvP0sbu8xwPFl6KaqdqCtMbsoVocDpFPgrXjI7pjLKggVVUWExEAO29dIP49Iyh-4LlyrZfGBGTU4iqFVEx52S4d1gvl01I33kVE" />
+        </div>
+      </div>
+      <div class="bg-card-light dark:bg-card-dark p-4 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">TOPLAM ZİYARETÇİ</p>
+          <p class="text-3xl font-bold my-2">304,584</p>
+          <p class="text-sm text-success flex items-center">
+            <span class="material-icons-outlined text-base">arrow_upward</span>
+            +8.2%
+          </p>
+        </div>
+      </div>
+      <div class="bg-card-light dark:bg-card-dark p-4 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">AKTİF REZERVASYON</p>
+          <p class="text-3xl font-bold my-2">192</p>
+          <p class="text-sm text-danger flex items-center">
+            <span class="material-icons-outlined text-base">arrow_downward</span>
+            -3.1%
+          </p>
+        </div>
+      </div>
+      <div class="bg-card-light dark:bg-card-dark p-4 rounded-lg flex flex-col justify-between">
+        <div>
+          <p class="text-sm text-text-light-secondary dark:text-text-dark-secondary">DÖNÜŞÜM ORANI</p>
+          <p class="text-3xl font-bold my-2">%0.032</p>
+          <p class="text-sm text-success flex items-center">
+            <span class="material-icons-outlined text-base">arrow_upward</span>
+            +0.5%
+          </p>
+        </div>
+      </div>
+      <div class="lg:col-span-4 bg-card-light dark:bg-card-dark p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Yıllık Satış Trendi</h3>
+          <div class="flex items-center gap-2">
+            <select class="text-sm bg-gray-100 dark:bg-slate-700 border-none rounded-md p-2 focus:ring-0">
+              <option>Yıllık</option>
+              <option>6 Aylık</option>
+              <option>3 Aylık</option>
+            </select>
+            <div class="flex border border-border-light dark:border-border-dark rounded-md">
+              <button class="p-2 bg-gray-200 dark:bg-slate-600 rounded-l-md">
+                <span class="material-icons-outlined text-base">bar_chart</span>
+              </button>
+              <button class="p-2">
+                <span class="material-icons-outlined text-base">show_chart</span>
+              </button>
+              <button class="p-2">
+                <span class="material-icons-outlined text-base">area_chart</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="h-80">
+          <img alt="Yıllık satış trendini gösteren çubuk grafik" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT8yXkEuKvmAWM2Qee5IABrLHQiw8n1gBLMSXBUrVNgmzINtRGZaMmdUI6X4FjCF5hsKiYg2FhCQHZV9ENRVEJhL8gqNpJ18pAGyqXdrnXbPQXxnQBiELQZ441ep_vdacbNpu55oaM9AVW9UwK4yB2UX4LlfseriV7O3-zJ6_8mDuinKgHe-Xe6izdVZQRnqltxcGKxnTwWYPFcKdgNBOT0m8JLHkecjlZ_yyyXjY_-3YhXhInSbIRHD3L8bUXHiS2umUtDeHk_Hc" />
+        </div>
+      </div>
+      <div class="lg:col-span-4 bg-card-light dark:bg-card-dark p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Popüler Turlar (En Çok Tıklananlar)</h3>
+          <div class="flex items-center gap-2">
+            <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+              <span class="material-icons-outlined">arrow_back_ios_new</span>
+            </button>
+            <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-slate-700">
+              <span class="material-icons-outlined">arrow_forward_ios</span>
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden">
+            <img alt="İsviçre Turu Kapak Fotoğrafı" class="w-full h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXI2H2xrt0nZjxJ40gQNiTR4ZMjjQzkSgdkRmpMr0dsCidUbGUdSVNpwmOs9anT94-LxZNWrrr3rQ_U3UAL3ixiWU4RUmZH7jab055-O1ERq_rdsqp61GxORlxxRAY8ozTYkmFmzwv3_UbOhHNXqmQO-1PDU1kzKhh836GVni54avedmMUYgz6cjAyro7zJGFlyLj7MbxVY22y81-Im14Cl9RlbiXaEM6PRr4ALNx1guh1EGE4HtB5mj8jAYZuyOnr5Fs3m6oLGkM" />
+            <div class="p-4">
+              <h4 class="font-semibold text-sm mb-2">İsviçre Turu (Adını ve...)</h4>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary mb-3">142 Ziyaret</p>
+              <button class="w-full bg-primary text-white py-2 rounded-md text-sm font-semibold">İncele</button>
+            </div>
+          </div>
+          <div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden">
+            <img alt="Almanya Turu Kapak Fotoğrafı" class="w-full h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzOw-LAt9JyHu5qGrn0TpOMFupmYaaePTWlTb_jHo6AQvAiKyzVkwHTRjQjOK0mgihycuL2Q1QQUlsudrUvuOLJESrsiYNYvGffFV6yH301jiRT929_SFFsZarKfYryqsYdXS1TZff4CgOT_R-XrQ3-6rTg-oh3xU9wi-quYBCjDLAzWUS5li447tYG5ie7VDozE4MBTGZY35op3WAa4mLy26AuBiFZET7fyW6mq9csvx6_sSKKdJFDiWcbcHOXck9SWyqVjZZjzM" />
+            <div class="p-4">
+              <h4 class="font-semibold text-sm mb-2">Almanya Çarşı Gap Turu (...)</h4>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary mb-3">125 Ziyaret</p>
+              <button class="w-full bg-primary text-white py-2 rounded-md text-sm font-semibold">İncele</button>
+            </div>
+          </div>
+          <div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden">
+            <img alt="Kuzey İtalya Turu Kapak Fotoğrafı" class="w-full h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7b-WwxNXAAbEBI30J98tboSleKME8-ETR7suWFfnlkEeUxdl6YvMCQzyt_pVHPABTMw4OFgD6KcI0NCzMYbKN4rsIqma2_FjfAMSy29ehoc7ZRKeYYx1SeK1IcaHu3xX1dMCGvJaOZ1IOG_2x831AKFh06AgAWNCvX0v0sOlL47LLJlSnjpWo2wShrJtQ8-XhtMatvF-DL6nINNusRRyYdgCgq7DPxXhMUwsBLTFBEdj9io8CYDF7tcaMFod6HU56gTDVKBLC3qA" />
+            <div class="p-4">
+              <h4 class="font-semibold text-sm mb-2">Kuzey İtalya, Milano - Ver...</h4>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary mb-3">110 Ziyaret</p>
+              <button class="w-full bg-primary text-white py-2 rounded-md text-sm font-semibold">İncele</button>
+            </div>
+          </div>
+          <div class="border border-border-light dark:border-border-dark rounded-lg overflow-hidden">
+            <img alt="Cenova Turu Kapak Fotoğrafı" class="w-full h-32 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsx8A5UbP0ncXbrdI6fxEyyn5qh3Ls5HwhgvTZARL2OaZXt0b9LY3BF7wAQtbpysZU3GDkPqoDR_qPqos17n4_sdcbmzaYe7JcFzHYBdsbZzSImMrKdNi3tlqxF0nk_9lxVs-pTAW2e94gZYuxBJJvk0IvqPunRU8yeGqJcddi70A5S1aSTf7OPDc8gUkjoA-hlS25rtb69mQ52h500NrYys7feLFrg1f6EPiOAn68T76XAyFpo9BJi93AP2O_mMxGdDlLuYT5jno" />
+            <div class="p-4">
+              <h4 class="font-semibold text-sm mb-2">Cenova Turu</h4>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary mb-3">98 Ziyaret</p>
+              <button class="w-full bg-primary text-white py-2 rounded-md text-sm font-semibold">İncele</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-2 bg-card-light dark:bg-card-dark p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Son Rezervasyonlar</h3>
+          <a class="text-sm text-primary font-semibold" href="#">Tümünü Görüntüle</a>
+        </div>
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs text-text-light-secondary dark:text-text-dark-secondary uppercase">
+            <tr>
+              <th class="py-2 font-semibold">Tur Adı</th>
+              <th class="py-2 font-semibold">Müşteri</th>
+              <th class="py-2 font-semibold">Tarih</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border-light dark:border-border-dark">
+              <td class="py-3">Kış Masalına Yolculuk: Karpostallık..</td>
+              <td class="py-3">ZEHRA KAYA</td>
+              <td class="py-3">31/01/2025</td>
+            </tr>
+            <tr class="border-b border-border-light dark:border-border-dark">
+              <td class="py-3">ALMANYA ÇIKIŞLI GAP TURU ( HERBİTE...</td>
+              <td class="py-3">SALİH USTA</td>
+              <td class="py-3">16/10/2025</td>
+            </tr>
+            <tr>
+              <td class="py-3">Orta Avrupanın Işıltısı: Prag,...</td>
+              <td class="py-3">AYSUN AYDIN</td>
+              <td class="py-3">28/11/2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lg:col-span-2 bg-card-light dark:bg-card-dark p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Son Üyeler</h3>
+          <a class="text-sm text-primary font-semibold" href="#">Tümünü Görüntüle</a>
+        </div>
+        <table class="w-full text-sm text-left">
+          <thead class="text-xs text-text-light-secondary dark:text-text-dark-secondary uppercase">
+            <tr>
+              <th class="py-2 font-semibold">Üye</th>
+              <th class="py-2 font-semibold">Kayıt Tarihi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border-light dark:border-border-dark">
+              <td class="py-3 flex items-center gap-2">
+                <img alt="Zehra Kaya avatarı" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLoKoXKfxgd0aDutRJfZPEbrVvQHxkwgNXeV15cRXLymVrn59DFWfInJ5L0GA4QXBLsZrGAa5AkURItX8whLWmtOET2yB3uJz5ygICx7OnSOF308wDbXOuCCU-bL0seYTHzJrS5eA0_Zx_5lLd8e5LvMov2TY1PcViokxdXd2BemVXGSD4KFc4N2FPiDJAa19dVUzbLSrdEOLCJ7u-jmFujBYfh4XqpLcMiTpYP4zaFT91kj56AQhR5Lv6evyynP4MH60G1NyFhxA" />
+                <div>
+                  <p class="font-medium">ZEHRA KAYA</p>
+                  <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">emirbeduende@hotmail.de</p>
+                </div>
+              </td>
+              <td class="py-3">16/10/2025</td>
+            </tr>
+            <tr class="border-b border-border-light dark:border-border-dark">
+              <td class="py-3 flex items-center gap-2">
+                <img alt="Fatma Nur Kocaman avatarı" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpvviDkWCCZv4GSU0vdcZo2MsByBkSaYtluyrqt7ymk32XDXw2vu-hj6xBXG5ylMHgbBZ_j5YTSmc8p1T70q4mdbPS2f0eK0rMtvWGKQ8-GhpApcaqLZ-0I2Ue_FHUOAo7oRAVm3Nu0B3f8XvLd7ma4hD_Z5uV2EHjdQkn1DV4hTUUcKY3Y3I2lFLrPSlKzoZ7-C8rjS4dC4GMxrnfxDeiJqaxuV9DU3HNuEWpKJxWWzibKLHKervICKeiC7O2knywvX5vzDcmiOc" />
+                <div>
+                  <p class="font-medium">FATMA NUR KOCAMAN</p>
+                  <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">fatmanurkocaman@hotmail.com</p>
+                </div>
+              </td>
+              <td class="py-3">16/10/2025</td>
+            </tr>
+            <tr>
+              <td class="py-3 flex items-center gap-2">
+                <img alt="Ferdi Tayfur Gözlüoğlu avatarı" class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUOjy_rr1wIRZorkME6Sd5k5Ca_1eVwJgtqJRM4Wg2UEhOARz6T1GYVQV05jP5jtnRbzOMGhVmOyWgs1t7kCVs2zZunVXgUvr6eWEHef7Oy8dKsuRlYaQrQoA3IqceYl1PZx9Pe-VooPRwGgaOEQ3rQt8048VD968mF0vr3XV_96D-wpEX_Vz-aXX83avhbbw3ilaZA3DfW22A8lpVDpl5TijF29etQvHDY3qsOS1vRaYZQZkzr0D0rz71cb-GH2fJO_T6PudFR38" />
+                <div>
+                  <p class="font-medium">FERDİ TAYFUR GÖZLÜOĞLU</p>
+                  <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">ferdi.tayfur@example.com</p>
+                </div>
+              </td>
+              <td class="py-3">15/10/2025</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="lg:col-span-2 bg-card-light dark:bg-card-dark p-6 rounded-lg flex flex-col items-center justify-center text-center">
+        <span class="material-icons-outlined text-5xl text-text-light-secondary dark:text-text-dark-secondary mb-4">hourglass_empty</span>
+        <h3 class="text-lg font-semibold">Bekleyen Rezervasyonlar</h3>
+        <p class="text-text-light-secondary dark:text-text-dark-secondary mt-2">Şu anda bekleyen işleminiz yok. Harika!</p>
+      </div>
+      <div class="lg:col-span-2 bg-card-light dark:bg-card-dark p-6 rounded-lg flex flex-col items-center justify-center text-center">
+        <span class="material-icons-outlined text-5xl text-text-light-secondary dark:text-text-dark-secondary mb-4">remove_shopping_cart</span>
+        <h3 class="text-lg font-semibold">Sepet Terk</h3>
+        <p class="text-text-light-secondary dark:text-text-dark-secondary mt-2">Sepet terk kaydı bulunmuyor.</p>
+      </div>
+      <div class="lg:col-span-4 bg-card-light dark:bg-card-dark p-6 rounded-lg">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold">Son Aktiviteler (Olaylar)</h3>
+          <a class="text-sm text-primary font-semibold" href="#">Tümünü Görüntüle</a>
+        </div>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-success/20 text-success flex items-center justify-center">
+              <span class="material-icons-outlined text-xl">add</span>
+            </div>
+            <div>
+              <p class="font-medium text-sm">Ürün eklendi: Kış Masalına Yolculuk: Karpostallık Hallstatt..</p>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">Ferdi Tayfur Gözlüoğlu - 4 saat önce</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-warning/20 text-warning flex items-center justify-center">
+              <span class="material-icons-outlined text-xl">edit</span>
+            </div>
+            <div>
+              <p class="font-medium text-sm">Rezervasyon düzenlendi (Ferdi Tayfur Gözlüoğlu)</p>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">Sistem - 4 saat önce</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-danger/20 text-danger flex items-center justify-center">
+              <span class="material-icons-outlined text-xl">delete</span>
+            </div>
+            <div>
+              <p class="font-medium text-sm">Müşteri silindi: John Doe</p>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">Ayşe Yılmaz - 1 gün önce</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-blue-500/20 text-blue-500 flex items-center justify-center">
+              <span class="material-icons-outlined text-xl">person_add</span>
+            </div>
+            <div>
+              <p class="font-medium text-sm">Yeni üye kaydı: FATMA NUR KOCAMAN</p>
+              <p class="text-xs text-text-light-secondary dark:text-text-dark-secondary">Sistem - 2 gün önce</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

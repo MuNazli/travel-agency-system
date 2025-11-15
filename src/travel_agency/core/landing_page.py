@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+from pathlib import Path
 from textwrap import dedent
+
+DEFAULT_FILENAME = "landing_page.html"
 
 
 def generate_landing_page() -> str:
@@ -41,4 +44,27 @@ def generate_landing_page() -> str:
     ).strip()
 
 
-__all__ = ["generate_landing_page"]
+def save_landing_page(directory: str | Path = ".", filename: str = DEFAULT_FILENAME) -> Path:
+    """Write the landing page HTML to ``directory/filename`` and return the path.
+
+    Parameters
+    ----------
+    directory:
+        Destination directory where the HTML file should be written.
+    filename:
+        The desired filename for the landing page markup. Defaults to
+        ``landing_page.html``.
+    """
+
+    destination = Path(directory, filename)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(generate_landing_page(), encoding="utf-8")
+    return destination
+
+
+if __name__ == "__main__":
+    output_path = save_landing_page()
+    print(output_path)
+
+
+__all__ = ["generate_landing_page", "save_landing_page", "DEFAULT_FILENAME"]
